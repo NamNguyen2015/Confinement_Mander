@@ -9,4 +9,4 @@ pillow
 streamlit-aggrid
 pypdf2
 openpyxl
-
+seaborn==0.11.1
