@@ -18,7 +18,7 @@ options=['Circular', 'Spiral', 'Rectangular']
 selected_option=st.selectbox('Select one option:', options)
 
 if selected_option=='Circular':
-    st.image('../Mander_confinement/circular.jpeg')
+    st.image('circular.jpeg')
     st.write('Parameters:')
     D=st.number_input('Diameter of transverse reinforcement (D):', 0.003 )
     d_s=st.number_input('Diameter of Circular/Spiral Column (d_s):', 0.14)
@@ -54,7 +54,7 @@ if selected_option=='Circular':
     
     
 elif selected_option== 'Spiral':
-    st.image('../Mander_confinement/circular.jpeg')
+    st.image('circular.jpeg')
     st.write('Parameters:')
     D=st.number_input('Diameter of transverse reinforcement (D):', 0.003 )
     d_s=st.number_input('Diameter of Circular/Spiral Column (d_s):', 0.14)
@@ -87,7 +87,7 @@ elif selected_option== 'Spiral':
     st.line_chart(df, x='eps_c', y='f_c')
     
 else:
-    st.image('../Mander_confinement/rectangular.jpeg')
+    st.image('rectangular.jpeg')
     D=st.number_input('Diameter of transverse reinforcement (D):',3/1000)
    
 
