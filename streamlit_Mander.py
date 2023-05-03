@@ -15,7 +15,7 @@ import Confinement_Mander as CM
 
 
 options=['Circular', 'Spiral', 'Rectangular']
-selected_option=st.selectbox('Select one option:', options)
+selected_option=st.sidebar.selectbox('Select one option:', options)
 
 if selected_option=='Circular':
     st.image('circular.jpeg')
