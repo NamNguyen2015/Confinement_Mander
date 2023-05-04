@@ -13,6 +13,21 @@ import matplotlib.pyplot as plt
 import math
 import Confinement_Mander as CM
 
+# Define a function to create a download link
+def download_link(df, filename):
+    csv = df.to_csv(index=False)
+    b64 = base64.b64encode(csv.encode()).decode()
+    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}.csv">Download CSV file</a>'
+    return href
+
+
+
+
+
+
+
+
+
 
 
 options=['Circular', 'Spiral', 'Rectangular']
@@ -52,10 +67,12 @@ if selected_option=='Circular':
     
     # Plot
     st.line_chart(df, x='eps_c', y= 'f_c')
-    # Set the x and y axis labels using pyplot
-    plt.xlabel('Compressive Strain')
-    plt.ylabel('Compressive Stress')
-    st.pyplot()
+    
+    # Create a download button
+    st.markdown(download_link(df, 'mydata'), unsafe_allow_html=True)
+
+
+    
    
 
    
