@@ -52,7 +52,7 @@ if selected_option=='Circular':
     # Plot
     chart=st.line_chart(df, x='eps_c', y= 'f_c')
     # Set the x and y axis labels
-    chart.set_axis_labels('Compressive Strain, $\epsilon_c$', 'Compressive Stress')
+    chart.set_axis_labels('Compressive Strain', 'Compressive Stress')
    
 
    
