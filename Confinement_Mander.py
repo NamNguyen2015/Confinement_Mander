@@ -49,7 +49,7 @@ class Mander(object):
         r=E_c/(E_c-E_sec)  # equation (6)
         x=eps_c/eps_cc  # equation (4)
         f_c=(f_cc*x*r)/(r-1+x**r)  # equation (3)
-        df=pd.DataFrame({'$\epsilon_c$':eps_c,'$f_c$':f_c})
+        df=pd.DataFrame({'\eps_c':eps_c,'f_c':f_c})
         return df
     
     
@@ -252,7 +252,7 @@ sectType=Circular.Sect_type
 Circular.fcc(sectType,f_effective)
 
 # Plot
-sns.lineplot(data=Circular.fc(),x='$\epsilon_c$',y='$f_c$')
+sns.lineplot(data=Circular.fc(),x='eps_c',y='f_c')
 
 # Call Mander.fc() to access the X, y data. (returns a panda dataframe)
 Circular.fc()
@@ -308,7 +308,7 @@ sectType=rect.Sect_type
 rect.fcc(sectType,f_effective)
 
 # Plot
-sns.lineplot(data=rect.fc(),x='$epsilon_c$',y='$f_c$')
+sns.lineplot(data=rect.fc(),x='eps_c',y='f_c')
 
 # Call Mander.fc() to access the X, y data. (returns a panda dataframe)
 rect.fc()
