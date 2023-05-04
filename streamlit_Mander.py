@@ -9,6 +9,7 @@ Created on Wed May  3 15:19:38 2023
 import streamlit as st
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 import math
 import Confinement_Mander as CM
 
