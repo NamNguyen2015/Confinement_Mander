@@ -47,9 +47,11 @@ if selected_option=='Circular':
     Circular.fcc(sectType,f_effective)
     # Call Mander.fc() to access the X, y data. (returns a panda dataframe)
     df=Circular.fc()
+    df = df.rename(columns={'eps_c': 'A', 'f_c': 'B'})
     st.write(df)
+    
     # Plot
-    st.line_chart(df, x='eps_c', y= 'f_c')
+    st.line_chart(df, x='A', y= 'B')
    
 
    
