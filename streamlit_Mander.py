@@ -20,14 +20,14 @@ selected_option=st.sidebar.selectbox('Select one option:', options)
 if selected_option=='Circular':
     st.image('circular.jpeg')
     st.write('Parameters:')
-    D=st.number_input('Diameter of transverse reinforcement (D):', 0.003 )
-    d_s=st.number_input('Diameter of Circular/Spiral Column (d_s):', 0.14)
-    s=st.number_input('spacing of Transverse reinforcements (s):', 0.1)
+    D=st.number_input('Diameter of transverse reinforcement D (m):', 0.003 )
+    d_s=st.number_input('Diameter of Circular/Spiral Column d_s (m):', 0.14)
+    s=st.number_input('spacing of Transverse reinforcements s (m):', 0.1)
 
-    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel (f_yh):', 345)
+    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh (MPa):', 345)
     
-    f_co=st.number_input('f_co', 34)
-    A_long=st.number_input('Total Long rebar Area', 0.01)
+    f_co=st.number_input('f_co (MPa)', 34)
+    A_long=st.number_input('Total Long rebar Area ($E = mc^2$)', 0.01)
     
    #Create an Instant for Circular section:
     Circular= CM.Mander(f_co)
