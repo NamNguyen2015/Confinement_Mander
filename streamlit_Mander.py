@@ -47,7 +47,7 @@ if selected_option=='Circular':
     Circular.fcc(sectType,f_effective)
     # Call Mander.fc() to access the X, y data. (returns a panda dataframe)
     df=Circular.fc()
-    df = df.rename(columns={'eps_c': 'A', 'f_c': 'B'})
+    df = df.rename(columns={'eps_c': r'$\epsilon_c$', 'f_c': r'$f_c$'})
     st.write(df)
     
     # Plot
