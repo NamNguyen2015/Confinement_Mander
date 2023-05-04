@@ -11,6 +11,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import base64
 import Confinement_Mander as CM
 
 # Define a function to create a download link
