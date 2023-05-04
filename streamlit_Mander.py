@@ -47,11 +47,12 @@ if selected_option=='Circular':
     Circular.fcc(sectType,f_effective)
     # Call Mander.fc() to access the X, y data. (returns a panda dataframe)
     df=Circular.fc()
-    df = df.rename(columns={'eps_c': r'$\epsilon_c$', 'f_c': r'$f_c$'})
     st.write(df)
     
     # Plot
-    st.line_chart(df, x=r'$\epsilon_c$', y= r'$f_c$')
+    st.line_chart(df, x='eps_c', y= 'f_c')
+    # Set the x and y axis labels
+    chart.set_axis_labels('Compressive Strain', 'Compressive Stress')
    
 
    
