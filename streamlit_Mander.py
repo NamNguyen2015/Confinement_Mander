@@ -49,9 +49,9 @@ if selected_option=='Circular':
     df=Circular.fc()
     st.write(df)
     # Plot
-    st.line_chart(df, x='eps_c', y='f_c')
+    st.line_chart(df, x='Strain', y='Force')
     # Set the x and y axis labels
-    chart.set_axis_labels('Strain', 'Force')
+    #chart.set_axis_labels('Strain', 'Force')
 
    
     
