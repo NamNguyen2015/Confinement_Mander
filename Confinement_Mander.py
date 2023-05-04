@@ -252,7 +252,7 @@ sectType=Circular.Sect_type
 Circular.fcc(sectType,f_effective)
 
 # Plot
-sns.lineplot(data=Circular.fc(),x='eps_c',y='f_c')
+sns.lineplot(data=Circular.fc(),x='$\epsilon_c$',y='$f_c$')
 
 # Call Mander.fc() to access the X, y data. (returns a panda dataframe)
 Circular.fc()
