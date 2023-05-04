@@ -96,14 +96,14 @@ if selected_option=='Circular':
 elif selected_option== 'Spiral':
     st.image('circular.jpeg')
     st.write('Parameters:')
-    D=st.number_input('Diameter of transverse reinforcement D [m]:', value= 0.003, min_value=float(0.00) )
-    d_s=st.number_input('Diameter of Circular/Spiral Column d_s [m]:',value=  0.14, min_value=float(0.00))
-    s=st.number_input('spacing of Transverse reinforcements s [m]:', value= 0.1, min_value=float(0.00))
+    D=st.number_input('Diameter of transverse reinforcement D [m]:', value= float(0.003), min_value=float(0.00) )
+    d_s=st.number_input('Diameter of Circular/Spiral Column d_s [m]:',value=  float(0.14), min_value=float(0.00))
+    s=st.number_input('spacing of Transverse reinforcements s [m]:', value= float(0.1), min_value=float(0.00))
 
-    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:', value= 345, min_value=float(0.00))
+    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:', value= float(345.00), min_value=float(0.00))
     
-    f_co=st.number_input('f_co [MPa]', value= 34)
-    A_long=st.number_input('Total Long rebar Area [$m^2$]', value= 0.01, min_value=float(0.00))
+    f_co=st.number_input('f_co [MPa]', value= float(34.00), min_value=float(0.00))
+    A_long=st.number_input('Total Long rebar Area [$m^2$]', value= float(0.01), min_value=float(0.00))
     
    #Create an Instant for Circular section:
     Spiral= CM.Mander(f_co)
@@ -112,7 +112,7 @@ elif selected_option== 'Spiral':
     Spiral.Sect_Spiral(D,s,d_s)
     
     #calculate the longitudinal reinforcement ratio: (saves internaly)
-    A_long=st.number_input('A_long [$m^2$]',value=  0.01, min_value=float(0.00))
+    A_long=st.number_input('A_long [$m^2$]',value=  float(0.01), min_value=float(0.00))
     Spiral.rho_cc(A_long)
     #calculate the effective lateral pressure(?) based on the section and reinforcement data:
     Spiral.f_lat_eff()
@@ -132,27 +132,27 @@ elif selected_option== 'Spiral':
     
 else:
     st.image('rectangular.jpeg')
-    D=st.number_input('Diameter of transverse reinforcement D [m]:',value= 3/1000, min_value=float(0.00))
+    D=st.number_input('Diameter of transverse reinforcement D [m]:',value= float(3/1000), min_value=float(0.00))
    
-    s=st.number_input('spacing of Transverse reinforcements s [m]:', value= 0.05, min_value=float(0.00))
+    s=st.number_input('spacing of Transverse reinforcements s [m]:', value= float(0.05), min_value=float(0.00))
     
 
-    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:',value= 345, min_value=float(0.00))
+    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:',value= float(345.00), min_value=float(0.00))
     
     #  (see the figure)
     #bc,dc=1,0.2
-    bc=st.number_input('dimentions of Rect section bc [m]:',value= (320/1000)*0.9, min_value=float(0.00))
-    dc=st.number_input('dimentions of Rect section dc [m]: ',value= 55/1000, min_value=float(0.00))
+    bc=st.number_input('dimentions of Rect section bc [m]:',value= float((320/1000)*0.9), min_value=float(0.00))
+    dc=st.number_input('dimentions of Rect section dc [m]: ',value= float(55/1000), min_value=float(0.00))
     # Total Area of Transverse reinforcement in x and y direction for Rectangle/Square section: (see the figure).
-    f_co=st.number_input('f_co [MPa]',value=  36, min_value=float(0.00))
-    eps_max=st.number_input('eps_max [m]',value=  0.03, min_value=float(0.00))
+    f_co=st.number_input('f_co [MPa]',value=  float(36.00), min_value=float(0.00))
+    eps_max=st.number_input('eps_max [m]',value=  float(0.03), min_value=float(0.00))
     
     st.write("Calculate A_sx, Asy :")
     
-    A_sx= st.number_input('the total area of transverse bars running in the x, A_sx [$m^2$] ',value= 2*(np.pi*D**2)/4)
+    A_sx= st.number_input('the total area of transverse bars running in the x, A_sx [$m^2$] ',value= float(2*(np.pi*D**2)/4), min_value=float(0.00))
     
  
-    A_sy= st.number_input('the total area of transverse bars running in the x, A_sy [$m^2$] ',value= 2*(np.pi*D**2)/4)+(5*(np.pi*D**2)/4)
+    A_sy= st.number_input('the total area of transverse bars running in the x, A_sy [$m^2$] ',value= float(2*(np.pi*D**2)/4)+(5*(np.pi*D**2)/4), min_value=float(0.00))
 
     
     #A_sx=0 #set this zero for shell element model
@@ -171,7 +171,7 @@ else:
     # A_long: Total Long rebar Area
     #rect.rho_cc(A_long=0.032397674)
     st.write('Calculate A_long:')
-    A_long=st.number_input('A_long [$m^2$]',value= 1*(np.pi*0.010**2)/4, min_value=float(0.00))
+    A_long=st.number_input('A_long [$m^2$]',value= float(1*(np.pi*0.010**2)/4), min_value=float(0.00))
     rect.rho_cc(A_long=A_long)
     #calculate the effective lateral pressure(?) based on the section and reinforcement data:
     rect.f_lat_eff()
