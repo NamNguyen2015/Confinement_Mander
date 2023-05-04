@@ -36,8 +36,8 @@ if selected_option=='Circular':
     Circular.Sect_Circular(D,s,d_s)
     
     #calculate the longitudinal reinforcement ratio: (saves internaly)
-    #A_long=st.number_input('A_long [$m^2$]:', 0.01)
-    Circular.rho_cc(A_long=0.01)
+    A_long=st.number_input('A_long [$m^2$]:', 0.01)
+    Circular.rho_cc(A_long)
     #calculate the effective lateral pressure(?) based on the section and reinforcement data:
     Circular.f_lat_eff()
     #Call the calculated data from the object to use in next calculation (for having the short form):
@@ -49,7 +49,7 @@ if selected_option=='Circular':
     df=Circular.fc()
     st.write(df)
     # Plot
-    st.line_chart(df, x='eps_c [m]', y='f_c [MPa]')
+    st.line_chart(df, x='eps_c', y='f_c')
 
    
     
