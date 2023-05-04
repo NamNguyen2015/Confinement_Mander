@@ -20,14 +20,14 @@ selected_option=st.sidebar.selectbox('Select one option:', options)
 if selected_option=='Circular':
     st.image('circular.jpeg')
     st.write('Parameters:')
-    D=st.number_input('Diameter of transverse reinforcement D (m):', 0.003 )
-    d_s=st.number_input('Diameter of Circular/Spiral Column d_s (m):', 0.14)
-    s=st.number_input('spacing of Transverse reinforcements s (m):', 0.1)
+    D=st.number_input('Diameter of transverse reinforcement D [m]:', 0.003 )
+    d_s=st.number_input('Diameter of Circular/Spiral Column d_s [m]:', 0.14)
+    s=st.number_input('spacing of Transverse reinforcements s [m]:', 0.1)
 
-    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh (MPa):', 345)
+    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:', 345)
     
-    f_co=st.number_input('f_co (MPa)', 34)
-    A_long=st.number_input('Total Long rebar Area ($E = mc^2$)', 0.01)
+    f_co=st.number_input('f_co [MPa]', 34)
+    A_long=st.number_input('Total Long rebar Area [$m^2$]', 0.01)
     
    #Create an Instant for Circular section:
     Circular= CM.Mander(f_co)
@@ -36,7 +36,8 @@ if selected_option=='Circular':
     Circular.Sect_Circular(D,s,d_s)
     
     #calculate the longitudinal reinforcement ratio: (saves internaly)
-    Circular.rho_cc(A_long=0.01)
+    A_long=st.number_input('A_long [$m^2$]: ',0.01)
+    Circular.rho_cc(A_long)
     #calculate the effective lateral pressure(?) based on the section and reinforcement data:
     Circular.f_lat_eff()
     #Call the calculated data from the object to use in next calculation (for having the short form):
@@ -48,7 +49,7 @@ if selected_option=='Circular':
     df=Circular.fc()
     st.write(df)
     # Plot
-    st.line_chart(df, x='eps_c', y='f_c')
+    st.line_chart(df, x='eps_c [m]', y='f_c [MPa]')
 
    
     
