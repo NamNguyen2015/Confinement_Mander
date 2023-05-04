@@ -15,12 +15,11 @@ import base64
 import Confinement_Mander as CM
 
 # Define a function to create a download link
-def download_link(df, filename):
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()
-    href = f'<a href="data:file/csv;base64,{b64}" download="{filename}.csv">Download CSV file</a>'
+def download_link(df, file_name, file_label='Download as Excel'):
+    csv = df.to_excel(index=False)
+    b64 = base64.b64encode(csv).decode()
+    href = f'<a href="data:application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;base64,{b64}" download="{file_name}.xlsx">{file_label}</a>'
     return href
-
 
 
 
