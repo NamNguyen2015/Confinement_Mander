@@ -55,9 +55,9 @@ if selected_option=='Circular':
     d_s=st.number_input('Diameter of Circular/Spiral Column d_s [m]:',value=float(0.14), min_value=float(0.00))
     s=st.number_input('spacing of Transverse reinforcements s [m]:',value=float( 0.10), min_value=float(0.00))
 
-    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:', value=345, min_value=0 )
+    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:', value=float(345.00), min_value=float(0.00) )
     
-    f_co=st.number_input('f_co [MPa]', value=34, min_value=0)
+    f_co=st.number_input('f_co [MPa]', value=float(34.00), min_value=float(0.00))
     A_long=st.number_input('Total Long rebar Area [$m^2$]', value=float(0.01), min_value=float(0.00))
     
    #Create an Instant for Circular section:
