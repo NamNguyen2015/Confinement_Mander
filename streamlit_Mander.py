@@ -51,7 +51,7 @@ if selected_option=='Circular':
     st.write(df)
     
     # Plot
-    st.line_chart(df, x='A', y= 'B')
+    st.line_chart(df, x=r'$\epsilon_c$', y= r'$f_c$')
    
 
    
