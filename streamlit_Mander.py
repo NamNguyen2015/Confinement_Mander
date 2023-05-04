@@ -84,7 +84,7 @@ if selected_option=='Circular':
     st.line_chart(df, x='eps_c', y= 'f_c')
     
     # Create a download button
-    st.markdown(download_link(df, 'mydata'), unsafe_allow_html=True)
+    st.markdown(download_link(df, 'df_circular'), unsafe_allow_html=True)
 
 
     
@@ -96,14 +96,14 @@ if selected_option=='Circular':
 elif selected_option== 'Spiral':
     st.image('circular.jpeg')
     st.write('Parameters:')
-    D=st.number_input('Diameter of transverse reinforcement (D):', 0.003 )
-    d_s=st.number_input('Diameter of Circular/Spiral Column (d_s):', 0.14)
-    s=st.number_input('spacing of Transverse reinforcements (s):', 0.1)
+    D=st.number_input('Diameter of transverse reinforcement D [m]:', 0.003 )
+    d_s=st.number_input('Diameter of Circular/Spiral Column d_s [m]:', 0.14)
+    s=st.number_input('spacing of Transverse reinforcements s [m]:', 0.1)
 
-    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel (f_yh):', 345)
+    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:', 345)
     
-    f_co=st.number_input('f_co', 34)
-    A_long=st.number_input('Total Long rebar Area', 0.01)
+    f_co=st.number_input('f_co [MPa]', 34)
+    A_long=st.number_input('Total Long rebar Area [$m^2$]', 0.01)
     
    #Create an Instant for Circular section:
     Spiral= CM.Mander(f_co)
@@ -112,7 +112,8 @@ elif selected_option== 'Spiral':
     Spiral.Sect_Spiral(D,s,d_s)
     
     #calculate the longitudinal reinforcement ratio: (saves internaly)
-    Spiral.rho_cc(A_long=0.01)
+    A_long=st.number_input('A_long [$m^2$]', 0.01)
+    Spiral.rho_cc(A_long)
     #calculate the effective lateral pressure(?) based on the section and reinforcement data:
     Spiral.f_lat_eff()
     #Call the calculated data from the object to use in next calculation (for having the short form):
@@ -125,33 +126,34 @@ elif selected_option== 'Spiral':
     st.write(df)
     # Plot
     st.line_chart(df, x='eps_c', y='f_c')
+    # Create a download button
+    st.markdown(download_link(df, 'df_spiral'), unsafe_allow_html=True)
+
     
 else:
     st.image('rectangular.jpeg')
-    D=st.number_input('Diameter of transverse reinforcement (D):',3/1000)
+    D=st.number_input('Diameter of transverse reinforcement D [m]:',3/1000)
    
-
-    
-    
-    
-    s=st.number_input('spacing of Transverse reinforcements (s):', 0.05)
+    s=st.number_input('spacing of Transverse reinforcements s [m]:', 0.05)
     
 
-    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel (f_yh):',345)
+    f_yh=st.number_input('Yeilding stress of Transverse reinforcement steel f_yh [MPa]:',345)
     
     #  (see the figure)
     #bc,dc=1,0.2
-    bc=st.number_input('dimentions of Rect section (bc):',(320/1000)*0.9)
-    dc=st.number_input('dimentions of Rect section (dc):',55/1000)
+    bc=st.number_input('dimentions of Rect section bc [m]:',(320/1000)*0.9)
+    dc=st.number_input('dimentions of Rect section dc [m]: ',55/1000)
     # Total Area of Transverse reinforcement in x and y direction for Rectangle/Square section: (see the figure).
-    f_co=st.number_input('f_co', 36)
-    eps_max=st.number_input('eps_max', 0.03)
+    f_co=st.number_input('f_co [MPa]', 36)
+    eps_max=st.number_input('eps_max [m]', 0.03)
     
     st.write("Calculate A_sx, Asy :")
-    A_sx=2*(np.pi*D**2)/4
-    st.write('A_sx=',A_sx)
-    A_sy=(2*(np.pi*D**2)/4)+(5*(np.pi*D**2)/4)
-    st.write('A_sy=',A_sy)
+    
+    A_sx= st.number_input('the total area of transverse bars running in the x, A_sx [$m^2$] ',2*(np.pi*D**2)/4)
+    
+ 
+    A_sy= st.number_input('the total area of transverse bars running in the x, A_sy [$m^2$] ',2*(np.pi*D**2)/4)+(5*(np.pi*D**2)/4)
+
     
     #A_sx=0 #set this zero for shell element model
     # distance between the Longitudinal rebars (define as a list: w=[w1,w2,w3] ):
@@ -169,8 +171,7 @@ else:
     # A_long: Total Long rebar Area
     #rect.rho_cc(A_long=0.032397674)
     st.write('Calculate A_long:')
-    A_long=1*(np.pi*0.010**2)/4
-    st.write('A_long=',A_long)
+    A_long=st.number_input('A_long [$m^2$]',1*(np.pi*0.010**2)/4)
     rect.rho_cc(A_long=A_long)
     #calculate the effective lateral pressure(?) based on the section and reinforcement data:
     rect.f_lat_eff()
@@ -190,10 +191,12 @@ else:
     st.write('E_sec: ',format(rect.E_sec,'.3f'),'MPa')
     
     df=rect.fc()
-    
     st.write(df)
     # Plot
     st.line_chart(df, x='eps_c', y='f_c')
+    # Create a download button
+    st.markdown(download_link(df, 'df_rectangular'), unsafe_allow_html=True)
+
 
 
 
