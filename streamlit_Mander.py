@@ -50,8 +50,7 @@ if selected_option=='Circular':
     st.write(df)
     # Plot
     st.line_chart(df, x='$\epsilon_c$', y='$f_c$')
-    # Set the x and y axis labels
-    #chart.set_axis_labels('Strain', 'Force')
+
 
    
     
@@ -87,7 +86,7 @@ elif selected_option== 'Spiral':
     df=Spiral.fc()
     st.write(df)
     # Plot
-    st.line_chart(df, x='eps_c', y='f_c')
+    st.line_chart(df, x='$\epsilon_c$', y='$f_c$')
     
 else:
     st.image('rectangular.jpeg')
@@ -156,7 +155,7 @@ else:
     
     st.write(df)
     # Plot
-    st.line_chart(df, x='eps_c', y='f_c')
+    st.line_chart(df, x='$\epsilon_c$', y='$f_c$')
 
 
 
