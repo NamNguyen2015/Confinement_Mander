@@ -49,7 +49,7 @@ class Mander(object):
         r=E_c/(E_c-E_sec)  # equation (6)
         x=eps_c/eps_cc  # equation (4)
         f_c=(f_cc*x*r)/(r-1+x**r)  # equation (3)
-        df=pd.DataFrame({'eps_c':eps_c,'f_c':f_c})
+        df=pd.DataFrame({'$\epsilon_c$':eps_c,'$f_c$':f_c})
         return df
     
     
