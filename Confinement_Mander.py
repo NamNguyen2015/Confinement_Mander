@@ -308,7 +308,7 @@ sectType=rect.Sect_type
 rect.fcc(sectType,f_effective)
 
 # Plot
-sns.lineplot(data=rect.fc(),x='eps_c',y='f_c')
+sns.lineplot(data=rect.fc(),x='$epsilon_c$',y='$f_c$')
 
 # Call Mander.fc() to access the X, y data. (returns a panda dataframe)
 rect.fc()
